@@ -48,7 +48,7 @@ class Box {
     canvas.ambientLight(150, 150, 150);
     canvas.camera(0, 0, 100, 0, 0, 0, 0, 1, 0);
     canvas.perspective(20, float(width)/float(height), 
-      0.001, 1000);
+      0.1, 1000);
 
     for (int i = 0; i < boxNum; i++) {
      
