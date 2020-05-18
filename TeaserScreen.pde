@@ -6,13 +6,14 @@ Template template;
 PFont f;
 
 void settings(){
-  fullScreen(P2D);
+  //fullScreen(P2D);
+  size(720,480, P2D);
 }
 
 void setup()
 {
   // comment out for full screen
-  surface.setSize(1280,720); // without window decoration for ZOOM screen sharing use.
+  //surface.setSize(1280,720); // without window decoration for ZOOM screen sharing use.
    
   frameRate(30); // slower as possible
   wg = new WarmingGeometry(10, 40, 280);
