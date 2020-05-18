@@ -7,6 +7,7 @@ PFont f;
 
 void settings(){
   fullScreen(P2D);
+  //size(720, 480, P2D);
 }
 
 void setup()
@@ -18,7 +19,7 @@ void setup()
   wg = new WarmingGeometry(10, 40, 280);
   nls = new NoiseLines(12, 5);
   ps = new PastelStripes(25);
-  template = new Template();
+  template = new Template(40);
 
   //size(1280, 720, P2D);
 
@@ -61,7 +62,7 @@ void draw()
     break;
   case 3:
     template.draw();
-    fill(255);
+    fill(100);
     break;
   }
 
