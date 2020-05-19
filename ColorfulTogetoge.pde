@@ -16,10 +16,7 @@ class  ColorfulTogetoge {
     float g = noise(noiseArgG) * 255;
     float b = noise(noiseArgB) * 255;
     canvas.fill(r, g, b);
-    //canvas.fill(#8df5c5);
-    canvas.noStroke();
-    
-    //canvas.arc(width/2, height/2, height/2, height/2, 0, 2*PI*abs(sin(theta)));
+    canvas.noStroke();  
     
     canvas.beginShape();
     for(int deg = 0; deg < 360; deg += 2){
@@ -32,7 +29,6 @@ class  ColorfulTogetoge {
         x = noiseRadius * cos(radians(deg)) + width / 2;
         y = noiseRadius * sin(radians(deg)) + height / 2;
   
-        //canvas.fill(x,y,100);
         canvas.vertex(x, y);
       }
       else{
