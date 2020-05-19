@@ -2,35 +2,34 @@ WarmingGeometry wg;
 NoiseLines nls;
 PastelStripes ps;
 bubbles bbls;
+Template template;
+Box prlns;
 
-PFont f;
-
+int size_of_effect = 5;
 void settings(){
-  fullScreen(P2D);
-  //size(720, 480, P2D);
+  //fullScreen(P2D);
+  size(800,450, P2D); // Recommend to use 16:9 ratio
 }
 
+PFont f;
 void setup()
 {
   // comment out for full screen
-  surface.setSize(1280,720); // without window decoration for ZOOM screen sharing use.
-   
+  //surface.setSize(1280,720); // without window decoration for ZOOM screen sharing use.
   frameRate(30); // slower as possible
   wg = new WarmingGeometry(10, 40, 280);
   nls = new NoiseLines(12, 5);
   ps = new PastelStripes(25);
   bbls = new bubbles(40);
-
-  //size(1280, 720, P2D);
-
-  //fullScreen(P2D,1); // number of display
+  template = new Template();
+  prlns = new Box();
 
   int font_size = height/10;
   PFont f = createFont("Jaldi-Bold.ttf", font_size);  
-  textFont(f); // 読み込んだフォント f を表示用テキストフォントに変更
+  textFont(f);
   textLeading(font_size);
 }
-int size_of_effect = 4;
+
 
 
 String title = "";
@@ -63,6 +62,10 @@ void draw()
   case 3:
     bbls.draw();
     fill(100);
+    break;
+  case 4:
+    prlns.draw();
+    fill(255);
     break;
   }
 
@@ -116,16 +119,17 @@ void drawThumbnails(int _number_of_div) {
   int margin_y = 20;
   int grid_w = (width-(number_of_div+1)*margin_x)/number_of_div;
   int grid_h = (int)(grid_w*(9.0/16.0));
-  
-  //////////////////
-  PGraphics canvas[] = {wg.canvas, nls.canvas, ps.canvas, bbls.canvas};
-  
+
+
+  PGraphics canvas[] = {wg.canvas, nls.canvas, ps.canvas, template.canvas, prlns.canvas};
+
   wg.update();
   nls.update();
   ps.update();
+  template.update();
+  prlns.update();
   bbls.update();
-  //////////////////
-  
+
   // margin , margin+grid_w+margin, margin+grid_w+margin+grid_w+margin
   for ( int i = 0; i < canvas.length; i++ ) {
     Rectangle r = new Rectangle(margin_x+(i%number_of_div)*(grid_w+margin_x), 
