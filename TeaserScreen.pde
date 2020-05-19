@@ -126,8 +126,8 @@ void keyPressed()
 
 void drawThumbnails(int _number_of_div) {
   int number_of_div = _number_of_div;
-  int margin_x = 20;
-  int margin_y = 20;
+  int margin_x = 10;
+  int margin_y = 10;
   int grid_w = (width-(number_of_div+1)*margin_x)/number_of_div;
   int grid_h = (int)(grid_w*(9.0/16.0));
 
