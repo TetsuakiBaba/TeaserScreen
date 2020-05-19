@@ -7,20 +7,22 @@ class Bubble {
   float noise_param;
   int color_palette[] = {#7ADAFF, #6FE6E8, #88FFDF, #6FE8A6, #7AFF91};
   int c;
+  PGraphics canvas;
 
-  Bubble() {
-    y = (int)random(height + d/2, height + d/2 + 1000);;
+  Bubble(PGraphics _canvas) {
+    y = (int)random(height + d/2, height + d/2 + 1000);
     d = (int)random(20, 100);
     vx = random(0.002, 0.01);
     vy = random(2, 6);
     noise_param = random(0, 1000);
     c = color_palette[(int)random(color_palette.length)];
+    canvas = _canvas;
   }
 
   void draw() {
-    noStroke();
-    fill(c, 150);
-    ellipse(x, y, d, d);
+    canvas.noStroke();
+    canvas.fill(c, 150);
+    canvas.ellipse(x, y, d, d);
     x = (int)(displayWidth * noise(noise_param));
     y -= vy;
     if (y <= -d) {
@@ -38,12 +40,15 @@ class Bubbles {
     
     b = new Bubble[_n];//ookisa
     for (int i = 0; i < b.length; i++) {
-      b[i] = new Bubble();//seisei
+      b[i] = new Bubble(canvas);//seisei
     }
   }
   void update(){
     canvas.beginDraw();
     canvas.background(#FFFFFF);
+    for (int i = 0; i < b.length; i++) {
+      b[i].draw();
+    }
     canvas.endDraw();
   }
   void draw()
@@ -55,9 +60,7 @@ class Bubbles {
     update();
     image(canvas, _x, _y, _w, _h);
     
-    for (int i = 0; i < b.length; i++) {
-      b[i].draw();
-    }
+    
   }
   PGraphics canvas;
   float theta;

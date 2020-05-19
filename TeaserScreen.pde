@@ -126,7 +126,7 @@ void drawThumbnails(int _number_of_div) {
   int grid_h = (int)(grid_w*(9.0/16.0));
 
   //////////////////
-  PGraphics canvas[] = {wg.canvas, nls.canvas, ps.canvas, template.canvas, prlns.canvas};
+  PGraphics canvas[] = {wg.canvas, nls.canvas, ps.canvas, template.canvas, prlns.canvas,bbls.canvas};
 
   wg.update();
   nls.update();
