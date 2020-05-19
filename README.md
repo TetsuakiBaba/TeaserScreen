@@ -22,3 +22,4 @@
 # Contributor
   * Box Effect: by [TaiyoYamaguchi](https://github.com/TaiyoYamaguchi)
   * Bubble Effect: by [00Enact](https://github.com/00Enact/TeaserScreen)
+  * Starry Sky Effect: by [HarunaKurahashi](https://github.com/Haruna-Kurahashi)
