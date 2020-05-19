@@ -4,11 +4,12 @@ PastelStripes ps;
 Template template;
 Box prlns;
 Bubbles bbls;
+StarrySky ss;
 
-int size_of_effect = 6;
+int size_of_effect = 7;
 
 void settings(){
-  //fullScreen(P2D);
+  fullScreen(P2D);
   size(800,450, P2D); // Recommend to use 16:9 ratio
 }
 
@@ -24,7 +25,8 @@ void setup()
   template = new Template();
   prlns = new Box();
   bbls = new Bubbles(40);
-
+  ss = new StarrySky(30);
+  
   int font_size = height/10;
   PFont f = createFont("Jaldi-Bold.ttf", font_size);  
   textFont(f);
@@ -71,6 +73,10 @@ void draw()
   case 5:
     bbls.draw();
     fill(100);
+    break;
+  case 6:
+    ss.draw();
+    fill(250);
     break;
   }
 
