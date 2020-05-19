@@ -1,5 +1,6 @@
 # Teaser Screen
 ![teaser](images/teaser.gif)
+
 オンラインイベント等で頻繁に利用する待機画像を生成するためのアプリケーション．
   * シンプル
   * CPUリソースの消費をなるべく抑える
@@ -7,7 +8,11 @@
   * 背景エフェクトの切り替え機能
   * 自分でエフェクトを追加できる
 
-を設計指針として制作しています．effectを追加する場合は別途新規タブでeffectクラスを作成した後，TeaserScreen.pdeでsetup関数での初期化と，draw()関数内でのswitch分の追加を行ってください．すでにあるclassをサンプルとして参照してください。
+を設計指針として制作しています。
+
+# How to Contribute
+上記の設計指針を参考に．effectを追加する場合は別途新規タブでeffectクラスを作成した後，TeaserScreen.pdeでsetup関数での初期化と，draw()関数内でのswitch分の追加を行い、動作確認をしてください。pull requestは作成したエフェクトファイルのみをリクエストしてください。利用しやすいようにtemplate.pdeというファイルを作成しておきました。こちらのクラス名及びファイル名を変更する形でコーディングするとやりやすいと思います。
+
 
 # 実行
 実行にはProcessing(>3.0)が必要になります。Processingで TeaserScreen.pdeを開いて実行してください。
