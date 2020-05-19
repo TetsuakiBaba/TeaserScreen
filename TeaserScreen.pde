@@ -1,7 +1,7 @@
 WarmingGeometry wg;
 NoiseLines nls;
 PastelStripes ps;
-Template template;
+bubbles bbls;
 
 PFont f;
 
@@ -19,7 +19,7 @@ void setup()
   wg = new WarmingGeometry(10, 40, 280);
   nls = new NoiseLines(12, 5);
   ps = new PastelStripes(25);
-  template = new Template(40);
+  bbls = new bubbles(40);
 
   //size(1280, 720, P2D);
 
@@ -61,7 +61,7 @@ void draw()
     fill(100);
     break;
   case 3:
-    template.draw();
+    bbls.draw();
     fill(100);
     break;
   }
@@ -118,12 +118,12 @@ void drawThumbnails(int _number_of_div) {
   int grid_h = (int)(grid_w*(9.0/16.0));
   
   //////////////////
-  PGraphics canvas[] = {wg.canvas, nls.canvas, ps.canvas, template.canvas};
+  PGraphics canvas[] = {wg.canvas, nls.canvas, ps.canvas, bbls.canvas};
   
   wg.update();
   nls.update();
   ps.update();
-  template.update();
+  bbls.update();
   //////////////////
   
   // margin , margin+grid_w+margin, margin+grid_w+margin+grid_w+margin
