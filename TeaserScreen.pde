@@ -1,6 +1,7 @@
 WarmingGeometry wg;
 NoiseLines nls;
 PastelStripes ps;
+<<<<<<< HEAD
 Template template;
 Bubbles bbls;
 
@@ -9,30 +10,55 @@ PFont f;
 void settings() {
   fullScreen(P2D);
   //size(720, 480, P2D);
+=======
+bubbles bbls;
+Template template;
+Box prlns;
+
+int size_of_effect = 5;
+void settings(){
+  //fullScreen(P2D);
+  size(800,450, P2D); // Recommend to use 16:9 ratio
+>>>>>>> 9129c0522c7f9444568d61bdce96d5e28529dde4
 }
 
+PFont f;
 void setup()
 {
   // comment out for full screen
+<<<<<<< HEAD
   surface.setSize(1280, 720); // without window decoration for ZOOM screen sharing use.
 
+=======
+  //surface.setSize(1280,720); // without window decoration for ZOOM screen sharing use.
+>>>>>>> 9129c0522c7f9444568d61bdce96d5e28529dde4
   frameRate(30); // slower as possible
   wg = new WarmingGeometry(10, 40, 280);
   nls = new NoiseLines(12, 5);
   ps = new PastelStripes(25);
+<<<<<<< HEAD
   template = new Template();
   bbls = new Bubbles(40);
 
   //size(1280, 720, P2D);
 
   //fullScreen(P2D,1); // number of display
+=======
+  bbls = new bubbles(40);
+  template = new Template();
+  prlns = new Box();
+>>>>>>> 9129c0522c7f9444568d61bdce96d5e28529dde4
 
   int font_size = height/10;
   PFont f = createFont("Jaldi-Bold.ttf", font_size);  
-  textFont(f); // 読み込んだフォント f を表示用テキストフォントに変更
+  textFont(f);
   textLeading(font_size);
 }
+<<<<<<< HEAD
 int size_of_effect = 5;
+=======
+
+>>>>>>> 9129c0522c7f9444568d61bdce96d5e28529dde4
 
 
 String title = "";
@@ -69,6 +95,10 @@ void draw()
   case 4:
     bbls.draw();
     fill(100);
+    break;
+  case 4:
+    prlns.draw();
+    fill(255);
     break;
   }
 
@@ -123,15 +153,25 @@ void drawThumbnails(int _number_of_div) {
   int grid_w = (width-(number_of_div+1)*margin_x)/number_of_div;
   int grid_h = (int)(grid_w*(9.0/16.0));
 
+<<<<<<< HEAD
   //////////////////
   PGraphics canvas[] = {wg.canvas, nls.canvas, ps.canvas, template.canvas, bbls.canvas};
+=======
+
+  PGraphics canvas[] = {wg.canvas, nls.canvas, ps.canvas, template.canvas, prlns.canvas};
+>>>>>>> 9129c0522c7f9444568d61bdce96d5e28529dde4
 
   wg.update();
   nls.update();
   ps.update();
   template.update();
+<<<<<<< HEAD
   bbls.update();
   //////////////////
+=======
+  prlns.update();
+  bbls.update();
+>>>>>>> 9129c0522c7f9444568d61bdce96d5e28529dde4
 
   // margin , margin+grid_w+margin, margin+grid_w+margin+grid_w+margin
   for ( int i = 0; i < canvas.length; i++ ) {

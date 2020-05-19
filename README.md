@@ -18,3 +18,6 @@
   * 矢印キー（下、右）：次のエフェクトに変更します
   * 矢印キー（上、左）：前のエフェクトに変更します。
   * その他キーボード入力：テキスト（日本語不可）を表示することができます。
+
+# Contributor
+  * Box Effect: by [TaiyoYamaguchi](https://github.com/TaiyoYamaguchi)
