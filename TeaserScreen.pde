@@ -2,15 +2,15 @@ WarmingGeometry wg;
 NoiseLines nls;
 PastelStripes ps;
 Template template;
-Box prlns;
+Box box;
 Bubbles bbls;
 StarrySky ss;
 
 int size_of_effect = 7;
 
-void settings(){
-  fullScreen(P2D);
-  size(800,450, P2D); // Recommend to use 16:9 ratio
+void settings() {
+  //fullScreen(P2D);
+  size(800, 450, P2D); // Recommend to use 16:9 ratio
 }
 
 PFont f;
@@ -23,10 +23,10 @@ void setup()
   nls = new NoiseLines(12, 5);
   ps = new PastelStripes(25);
   template = new Template();
-  prlns = new Box();
+  box = new Box();
   bbls = new Bubbles(40);
   ss = new StarrySky(30);
-  
+
   int font_size = height/10;
   PFont f = createFont("Jaldi-Bold.ttf", font_size);  
   textFont(f);
@@ -47,7 +47,7 @@ void draw()
   {
   case -1: // Thumnail viewer
     background(0);
-    drawThumbnails(3); // number of row 
+    drawThumbnails(4); // number of row 
     return;
 
   case 0:
@@ -67,7 +67,7 @@ void draw()
     fill(255);
     break;
   case 4:
-    prlns.draw();
+    box.draw();
     fill(255);
     break;
   case 5:
@@ -132,14 +132,17 @@ void drawThumbnails(int _number_of_div) {
   int grid_h = (int)(grid_w*(9.0/16.0));
 
   //////////////////
-  PGraphics canvas[] = {wg.canvas, nls.canvas, ps.canvas, template.canvas, prlns.canvas,bbls.canvas};
+  PGraphics canvas[] = {
+    wg.canvas, nls.canvas, ps.canvas, template.canvas, 
+    box.canvas, bbls.canvas, ss.canvas};
 
   wg.update();
   nls.update();
   ps.update();
   template.update();
-  prlns.update();
+  box.update();
   bbls.update();
+  ss.update();
   //////////////////
 
   // margin , margin+grid_w+margin, margin+grid_w+margin+grid_w+margin
