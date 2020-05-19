@@ -5,6 +5,7 @@ Template template;
 Box prlns;
 
 int size_of_effect = 5;
+
 void settings(){
   //fullScreen(P2D);
   size(800,450, P2D); // Recommend to use 16:9 ratio
