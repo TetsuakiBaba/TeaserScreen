@@ -1,4 +1,4 @@
-class NoiseLine { //<>//
+class NoiseLine { //<>// //<>//
   NoiseLine(PGraphics _canvas, int _number_of_vertex) {
     number_of_vertex = _number_of_vertex;
     param_noise = random(1000.0);

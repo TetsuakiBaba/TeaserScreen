@@ -3,8 +3,9 @@ NoiseLines nls;
 PastelStripes ps;
 Template template;
 Box prlns;
+Bubbles bbls;
 
-int size_of_effect = 5;
+int size_of_effect = 6;
 
 void settings(){
   //fullScreen(P2D);
@@ -22,6 +23,7 @@ void setup()
   ps = new PastelStripes(25);
   template = new Template();
   prlns = new Box();
+  bbls = new Bubbles(40);
 
   int font_size = height/10;
   PFont f = createFont("Jaldi-Bold.ttf", font_size);  
@@ -65,6 +67,10 @@ void draw()
   case 4:
     prlns.draw();
     fill(255);
+    break;
+  case 5:
+    bbls.draw();
+    fill(100);
     break;
   }
 
@@ -127,6 +133,7 @@ void drawThumbnails(int _number_of_div) {
   ps.update();
   template.update();
   prlns.update();
+  bbls.update();
   //////////////////
 
   // margin , margin+grid_w+margin, margin+grid_w+margin+grid_w+margin
