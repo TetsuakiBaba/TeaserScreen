@@ -1,11 +1,12 @@
 WarmingGeometry wg;
 NoiseLines nls;
 PastelStripes ps;
-bubbles bbls;
+Template template;
+Bubbles bbls;
 
 PFont f;
 
-void settings(){
+void settings() {
   fullScreen(P2D);
   //size(720, 480, P2D);
 }
@@ -13,13 +14,14 @@ void settings(){
 void setup()
 {
   // comment out for full screen
-  surface.setSize(1280,720); // without window decoration for ZOOM screen sharing use.
-   
+  surface.setSize(1280, 720); // without window decoration for ZOOM screen sharing use.
+
   frameRate(30); // slower as possible
   wg = new WarmingGeometry(10, 40, 280);
   nls = new NoiseLines(12, 5);
   ps = new PastelStripes(25);
-  bbls = new bubbles(40);
+  template = new Template();
+  bbls = new Bubbles(40);
 
   //size(1280, 720, P2D);
 
@@ -30,7 +32,7 @@ void setup()
   textFont(f); // 読み込んだフォント f を表示用テキストフォントに変更
   textLeading(font_size);
 }
-int size_of_effect = 4;
+int size_of_effect = 5;
 
 
 String title = "";
@@ -61,6 +63,10 @@ void draw()
     fill(100);
     break;
   case 3:
+    template.draw();
+    fill(255);
+    break;
+  case 4:
     bbls.draw();
     fill(100);
     break;
@@ -116,16 +122,17 @@ void drawThumbnails(int _number_of_div) {
   int margin_y = 20;
   int grid_w = (width-(number_of_div+1)*margin_x)/number_of_div;
   int grid_h = (int)(grid_w*(9.0/16.0));
-  
+
   //////////////////
-  PGraphics canvas[] = {wg.canvas, nls.canvas, ps.canvas, bbls.canvas};
-  
+  PGraphics canvas[] = {wg.canvas, nls.canvas, ps.canvas, template.canvas, bbls.canvas};
+
   wg.update();
   nls.update();
   ps.update();
+  template.update();
   bbls.update();
   //////////////////
-  
+
   // margin , margin+grid_w+margin, margin+grid_w+margin+grid_w+margin
   for ( int i = 0; i < canvas.length; i++ ) {
     Rectangle r = new Rectangle(margin_x+(i%number_of_div)*(grid_w+margin_x), 
