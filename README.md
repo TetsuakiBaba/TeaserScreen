@@ -21,3 +21,4 @@
 
 # Contributor
   * Box Effect: by [TaiyoYamaguchi](https://github.com/TaiyoYamaguchi)
+  * Bubble Effect: by [00Enact](https://github.com/00Enact/TeaserScreen)
