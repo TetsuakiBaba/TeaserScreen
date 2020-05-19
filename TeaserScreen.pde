@@ -6,6 +6,7 @@ Box prlns;
 Bubbles bbls;
 
 int size_of_effect = 6;
+
 void settings(){
   //fullScreen(P2D);
   size(800,450, P2D); // Recommend to use 16:9 ratio
