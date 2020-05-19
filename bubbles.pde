@@ -1,4 +1,4 @@
-class bubble {
+class Bubble {
   int x;
   int y;
   int d;
@@ -8,7 +8,7 @@ class bubble {
   int color_palette[] = {#7ADAFF, #6FE6E8, #88FFDF, #6FE8A6, #7AFF91};
   int c;
 
-  bubble() {
+  Bubble() {
     y = (int)random(height + d/2, height + d/2 + 1000);;
     d = (int)random(20, 100);
     vx = random(0.002, 0.01);
@@ -30,15 +30,15 @@ class bubble {
   }
 }
 
-class bubbles {
-  bubble[] b;//sengen
+class Bubbles {
+  Bubble[] b;//sengen
   
-  bubbles(int _n) {
+  Bubbles(int _n) {
     canvas = createGraphics(width, height, P2D);
     
-    b = new bubble[_n];//ookisa
+    b = new Bubble[_n];//ookisa
     for (int i = 0; i < b.length; i++) {
-      b[i] = new bubble();//seisei
+      b[i] = new Bubble();//seisei
     }
   }
   void update(){
