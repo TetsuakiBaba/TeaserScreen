@@ -1,12 +1,14 @@
 # Teaser Screen
 ![teaser](images/teaser.gif)
 
-オンラインイベント等で頻繁に利用する待機画像を生成するためのアプリケーション．
+オンラインイベント等で頻繁に利用する待機画像を生成するためのアプリケーション．Syphonサーバとなって、映像を他のアプリケーションにわたすこともできます。
+
   * シンプル
   * CPUリソースの消費をなるべく抑える
   * テキスト入力と時計機能を備える
   * 背景エフェクトの切り替え機能
   * 自分でエフェクトを追加できる
+  * OBSへ画面送信できる
 
 を設計指針として制作しています。
 
@@ -15,7 +17,10 @@
 
 
 # 実行
-実行にはProcessing(>3.0)が必要になります。Processingで TeaserScreen.pdeを開いて実行してください。
+  * Processing IDEから実行：Processing(>3.0)が必要になります。Processingで TeaserScreen.pdeを開いて実行してください。
+
+# 必要なライブラリ
+  * syphonライブラリが必要になります。ライブラリの追加からSyphonライブラリを追加した後、実行確認をしてください。
 
 # 使い方
   * F1：イベント開始1分前等にご利用ください。（It's about to startと表示されます）
@@ -23,6 +28,7 @@
   * 矢印キー（下、右）：次のエフェクトに変更します
   * 矢印キー（上、左）：前のエフェクトに変更します。
   * その他キーボード入力：テキスト（日本語不可）を表示することができます。
+  * OSB側では、Syphonクライアントから TeaserScreen を選択すると画面をOSB側で取得できます。
 
 # Contributor
   * Box Effect: by [TaiyoYamaguchi](https://github.com/TaiyoYamaguchi)

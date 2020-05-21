@@ -1,3 +1,7 @@
+import codeanticode.syphon.*;
+SyphonServer server;
+PGraphics canvas;
+
 WarmingGeometry wg;
 NoiseLines nls;
 PastelStripes ps;
@@ -8,14 +12,12 @@ StarrySky ss;
 
 int size_of_effect = 7;
 
-void settings() {
-  //fullScreen(P2D);
-  size(800, 450, P2D); // Recommend to use 16:9 ratio
-}
-
 PFont f;
+int font_size;
 void setup()
 {
+  //fullScreen(P2D);
+  size(1280, 720, P2D); // Recommend to use 16:9 ratio
   // comment out for full screen
   //surface.setSize(1280,720); // without window decoration for ZOOM screen sharing use.
   frameRate(30); // slower as possible
@@ -27,10 +29,11 @@ void setup()
   bbls = new Bubbles(40);
   ss = new StarrySky(30);
 
-  int font_size = height/10;
-  PFont f = createFont("Jaldi-Bold.ttf", font_size);  
-  textFont(f);
-  textLeading(font_size);
+  font_size = height/10;
+  f = createFont("Jaldi-Bold.ttf", font_size);  
+
+  canvas = createGraphics(width, height, P2D);
+  server = new SyphonServer(this, "TeaserScreen");
 }
 
 
@@ -42,41 +45,49 @@ int kind_of_effect = (int)random((int)size_of_effect);
 
 void draw()
 { 
-
+  canvas.beginDraw();
+  canvas.textFont(f);
+  canvas.textLeading(font_size);
   switch( kind_of_effect )
   {
   case -1: // Thumnail viewer
-    background(0);
+    canvas.background(0);
     drawThumbnails(4); // number of row 
-    return;
-
+    break;
   case 0:
     wg.draw();
-    fill(100);
+    canvas.image(wg.canvas, 0, 0);
+    canvas.fill(100);
     break;
   case 1:
     nls.draw();
-    fill(100);
+    canvas.image(nls.canvas,0,0);
+    canvas.fill(100);
     break;
   case 2:
     ps.draw();
-    fill(100);
+    canvas.image(ps.canvas,0,0);
+    canvas.fill(100);
     break;
   case 3:
     template.draw();
-    fill(255);
+    canvas.image(template.canvas,0,0);
+    canvas.fill(255);
     break;
   case 4:
     box.draw();
-    fill(255);
+    canvas.image(box.canvas,0,0);
+    canvas.fill(255);
     break;
   case 5:
     bbls.draw();
-    fill(100);
+    canvas.image(bbls.canvas,0,0);
+    canvas.fill(100);
     break;
   case 6:
     ss.draw();
-    fill(250);
+    canvas.image(ss.canvas,0,0);
+    canvas.fill(250);
     break;
   }
 
@@ -85,15 +96,18 @@ void draw()
     drawClock(width/2, height/4);
     // Draw Typed Message
     if ( title.length() > 0 ) {
-      text(title, width/2, height/2);
+      canvas.text(title, width/2, height/2);
     }
   } else {
-    noStroke();
-    fill(0, 0, 0, 150);
-    rect(0, 0, width, height);
-    fill(255);
-    text("It's about to start...", width/2, height/2);
+    canvas.noStroke();
+    canvas.fill(0, 0, 0, 150);
+    canvas.rect(0, 0, width, height);
+    canvas.fill(255);
+    canvas.text("It's about to start...", width/2, height/2);
   }
+  canvas.endDraw();
+  image(canvas, 0, 0);
+  server.sendImage(canvas);
 }
 
 void keyPressed()
@@ -132,7 +146,7 @@ void drawThumbnails(int _number_of_div) {
   int grid_h = (int)(grid_w*(9.0/16.0));
 
   //////////////////
-  PGraphics canvas[] = {
+  PGraphics canvas_effect[] = {
     wg.canvas, nls.canvas, ps.canvas, template.canvas, 
     box.canvas, bbls.canvas, ss.canvas};
 
@@ -146,19 +160,19 @@ void drawThumbnails(int _number_of_div) {
   //////////////////
 
   // margin , margin+grid_w+margin, margin+grid_w+margin+grid_w+margin
-  for ( int i = 0; i < canvas.length; i++ ) {
+  for ( int i = 0; i < canvas_effect.length; i++ ) {
     Rectangle r = new Rectangle(margin_x+(i%number_of_div)*(grid_w+margin_x), 
       margin_y+(grid_h+margin_y)*(i/number_of_div), 
       grid_w, grid_h);
 
-    image(canvas[i], 
+    canvas.image(canvas_effect[i], 
       margin_x+(i%number_of_div)*(grid_w+margin_x), 
       margin_y+(grid_h+margin_y)*(i/number_of_div), 
       grid_w, grid_h);
 
     if ( r.inside(mouseX, mouseY) ) {
-      fill(200, 150);
-      rect(-5+margin_x+(i%number_of_div)*(grid_w+margin_x), 
+      canvas.fill(200, 150);
+      canvas.rect(-5+margin_x+(i%number_of_div)*(grid_w+margin_x), 
         -5+margin_y+(grid_h+margin_y)*(i/number_of_div), 
         grid_w+10, grid_h+10);
       if ( mousePressed ) {          

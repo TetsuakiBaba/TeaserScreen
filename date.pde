@@ -34,5 +34,5 @@ void drawClock(int _x, int _y)
   String str_date;
   str_date = nf(month(), 2)+"." +nf(day(), 2)+"."+getWeekName()+"\n";
   str_date = str_date + nf(hour(), 2)+":"+nf(minute(), 2)+":"+nf(second(), 2);
-  text(str_date, _x, _y);
+  canvas.text(str_date, _x, _y);
 }

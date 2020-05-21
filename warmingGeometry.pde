@@ -1,5 +1,3 @@
-PGraphics canvas;
-
 class Spot {
   Spot(PGraphics _canvas, float _x, float _y, int _c, float _r) {
     x = x_init = _x;
